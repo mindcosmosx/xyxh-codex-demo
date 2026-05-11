@@ -59,9 +59,58 @@ function renderDetail(activity) {
     <div class="video-entry" id="openVideoBtn">
       点击查看活动视频
     </div>
+    <form class="signup-form" id="signupForm">
+      <h3>活动报名</h3>
+      <label>
+        姓名
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        手机号
+        <input type="tel" name="phone" required />
+      </label>
+      <label>
+        备注
+        <textarea name="note" rows="3"></textarea>
+      </label>
+      <button type="submit">提交报名</button>
+      <p class="signup-message" id="signupMessage" aria-live="polite"></p>
+    </form>
   `;
 
   document.getElementById("openVideoBtn").addEventListener("click", openVideo);
+  document.getElementById("signupForm").addEventListener("submit", (event) => {
+    handleSignup(event, activity);
+  });
+}
+
+function handleSignup(event, activity) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const message = document.getElementById("signupMessage");
+  const formData = new FormData(form);
+  const phone = formData.get("phone").trim();
+
+  if (!/^\d{11}$/.test(phone)) {
+    message.textContent = "请输入正确的手机号";
+    message.classList.add("error");
+    return;
+  }
+
+  const signup = {
+    activityId: activity.id,
+    activityTitle: activity.title,
+    name: formData.get("name").trim(),
+    phone,
+    note: formData.get("note").trim(),
+    savedAt: new Date().toISOString()
+  };
+
+  localStorage.setItem("activitySignup", JSON.stringify(signup));
+  message.textContent = "报名信息已保存到本地";
+  message.classList.remove("error");
+  form.reset();
 }
 
 function openVideo() {

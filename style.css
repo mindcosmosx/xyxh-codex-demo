@@ -78,6 +78,62 @@ body {
   cursor: pointer;
 }
 
+.signup-form {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #dfe8dd;
+  display: grid;
+  gap: 14px;
+}
+
+.signup-form h3 {
+  margin: 0;
+}
+
+.signup-form label {
+  display: grid;
+  gap: 8px;
+  color: #4f6652;
+  font-size: 14px;
+}
+
+.signup-form input,
+.signup-form textarea {
+  width: 100%;
+  border: 1px solid #d7e2d4;
+  border-radius: 14px;
+  padding: 11px 12px;
+  font: inherit;
+  color: #1f2d22;
+  background: #fbfdfb;
+}
+
+.signup-form textarea {
+  resize: vertical;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+  outline: 2px solid #9dbd98;
+  border-color: #9dbd98;
+}
+
+.signup-form button {
+  justify-self: start;
+  background: #213f2b;
+  color: white;
+}
+
+.signup-message {
+  min-height: 20px;
+  margin: 0;
+  color: #4f6652;
+}
+
+.signup-message.error {
+  color: #a33a2f;
+}
+
 .video-modal {
   position: fixed;
   inset: 0;
@@ -88,8 +144,8 @@ body {
   z-index: 999;
 }
 
-/* 故意留一个可让 Codex 修复的小问题：hidden 被 video-modal 覆盖后可能失效 */
-.hidden {
+/* Keep the modal hidden rule scoped and specific enough to override .video-modal display. */
+.video-modal.hidden {
   display: none;
 }
 
