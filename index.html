@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>心屿星河活动 Demo</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>心屿星河活动中心</h1>
+      <p>森林浴、自然疗愈与身心状态记录</p>
+    </header>
+
+    <section class="activity-list" id="activityList"></section>
+
+    <section class="activity-detail" id="activityDetail">
+      <h2>请选择一个活动</h2>
+      <p>点击上方活动卡片查看详情。</p>
+    </section>
+  </main>
+
+  <div class="video-modal hidden" id="videoModal">
+    <div class="video-panel portrait" id="videoPanel">
+      <div class="video-placeholder">
+        <span>竖屏视频播放区域</span>
+      </div>
+
+      <div class="video-actions">
+        <button id="landscapeBtn">横屏播放</button>
+        <button id="closeVideoBtn">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
